@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postbuild": "cat list.txt | xargs -J % cp % ../Shifty/core/static/js/menu/"
   },
   "private": true,
   "dependencies": {
