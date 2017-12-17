@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../models/quiz";
+import {QuizService} from "../quiz.service";
+import {Question} from "../models/question";
 
 @Component({
   selector: 'app-quiz',
@@ -9,24 +11,32 @@ import {Quiz} from "../models/quiz";
 export class QuizComponent implements OnInit {
 
   quiz: Quiz;
+  currQuestion: Question;
+  currIndex: number = 0;
 
-  pager = {
-    index: 0,
-    size: 1,
-    count: 1
-  };
+  mode = 'quiz';
+
 
   constructor(private quizService: QuizService) { }
 
-  ngOnInit() {
+  ngOnInit() : void {
     this.loadQuiz();
   }
 
-  loadQuiz() {
-    this.quizService.get().subscribe(res => {
-      this.quiz = new Quiz(res);
-      this.pager.count = this.quiz.questions.length;
-    });
+  loadQuiz() : void {
+    this.quizService.getQuiz().subscribe(
+      res => {
+        this.quiz = new Quiz(res);
+        this.setCurrQuestion();
+    },
+      err => {
+        console.error("Error: " + err.message);
+      }
+    );
+  }
+
+  setCurrQuestion() : void {
+    this.currQuestion = this.quiz.questions[this.currIndex];
   }
 
 }

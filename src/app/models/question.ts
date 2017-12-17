@@ -11,7 +11,7 @@ export class Question {
     this.id = data.id;
     this.name = data.name;
     this.answers = [];
-    data.options.forEach(a => {
+    data.answers.forEach(a => {
       this.answers.push(new Answer(a));
     });
   }

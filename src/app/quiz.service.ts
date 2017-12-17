@@ -16,26 +16,12 @@ export class QuizService {
 
   /** GET Quiz */
   getQuiz (): Observable<Quiz> {
-    return this.http.get<Quiz>(this.menuUrl + '/quiz')
-      .pipe(catchError(this.handleError('getQuiz', []))
-      );
+    return this.http.get<Quiz>(this.menuUrl + '/1');
   }
 
   /** GET Questions */
   getQuestions (): Observable<Question[]> {
-    return this.http.get<Question[]>(this.menuUrl + '/questions')
-      .pipe(catchError(this.handleError('getQuestions', []))
-      );
-  }
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+    return this.http.get<Question[]>(this.menuUrl + '/questions');
   }
 
 }
