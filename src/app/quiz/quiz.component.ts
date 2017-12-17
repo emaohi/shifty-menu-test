@@ -11,8 +11,8 @@ import {Question} from "../models/question";
 export class QuizComponent implements OnInit {
 
   quiz: Quiz;
-  currQuestion: Question;
   currIndex: number = 0;
+  count: number;
 
   mode = 'quiz';
 
@@ -27,7 +27,7 @@ export class QuizComponent implements OnInit {
     this.quizService.getQuiz().subscribe(
       res => {
         this.quiz = new Quiz(res);
-        this.setCurrQuestion();
+        this.count = this.quiz.questions.length;
     },
       err => {
         console.error("Error: " + err.message);
@@ -35,8 +35,14 @@ export class QuizComponent implements OnInit {
     );
   }
 
-  setCurrQuestion() : void {
-    this.currQuestion = this.quiz.questions[this.currIndex];
+  getCurrQuestion() : Question {
+    return this.quiz.questions[this.currIndex];
+  }
+
+  goTo(index: number) {
+    if (index >= 0 && index < this.count) {
+      this.currIndex = index;
+    }
   }
 
 }

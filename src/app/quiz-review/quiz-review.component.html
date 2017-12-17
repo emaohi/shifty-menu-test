@@ -1,0 +1,5 @@
+<div class="col-sm-4" *ngFor="let question of quiz.questions">
+  <div class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">
+    {{ isAnswered(question) }}
+  </div>
+</div>

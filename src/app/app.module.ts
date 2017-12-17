@@ -10,12 +10,14 @@ import {HttpClientModule} from "@angular/common/http";
 import { InMemoryDataService } from './in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {FormsModule} from "@angular/forms";
+import { QuizReviewComponent } from './quiz-review/quiz-review.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuizComponent
+    QuizComponent,
+    QuizReviewComponent
   ],
   imports: [
     BrowserModule,

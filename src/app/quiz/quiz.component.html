@@ -1,18 +1,31 @@
 <div class="jumbotron" *ngIf="quiz">
   <h2>{{quiz.name}}</h2>
   <p >You'll have {{quiz.time}} minutes to solve it, Good luck</p>
+  <a href="/" class="btn btn-primary">Back to dashboard</a>
 </div>
-<div class="container" *ngIf="mode=='quiz' && quiz">
+<div class="container" *ngIf="mode == 'quiz' && quiz">
   <div class="badge badge-info">Question {{currIndex + 1}} of {{quiz.questions.length}}.</div>
-  <h2>{{currIndex + 1}}. <span [innerHTML]="currQuestion.name"></span></h2>
-  <div class="row text-left options">
-    <div class="col-md-6" *ngFor="let option of currQuestion.answers">
+  <h2>{{currIndex + 1}}. <span [innerHTML]="getCurrQuestion().name"></span></h2>
+  <div class="row">
+    <div class="col-md-6" *ngFor="let answer of getCurrQuestion().answers">
       <div class="option">
-        <label class="" [attr.for]="option.id">
-          <input id="{{option.id}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(currQuestion, option);" />
-          {{option.name}}
+        <label class="" [attr.for]="answer.id">
+          <input id="{{answer.id}}" type="checkbox" [(ngModel)]="answer.selected"/>
+          {{answer.name}}
         </label>
       </div>
     </div>
   </div>
+  <hr>
+  <div class="text-sm-center">
+    <button class="btn btn-default" (click)="goTo(0);">First</button>
+    <button class="btn btn-info" (click)="goTo(currIndex - 1);">Prev</button>
+    <button class="btn btn-primary" (click)="goTo(currIndex + 1);">Next</button>
+    <button class="btn btn-default" (click)="goTo(count - 1);">Last</button>
+  </div>
+  <div class="text-sm-center">
+    <button class="btn btn-success" (click)="goTo(0);" style="margin-top: 20px">Review and submit</button>
+  </div>
 </div>
+
+<app-quiz-review [quiz]="quiz" *ngIf="mode == 'review' && quiz"></app-quiz-review>
