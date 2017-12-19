@@ -45,4 +45,9 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  showQuestion(id: number) : void {
+    this.mode = 'quiz';
+    this.goTo(id);
+  }
+
 }

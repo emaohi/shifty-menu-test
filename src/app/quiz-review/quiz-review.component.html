@@ -1,5 +1,10 @@
-<div class="col-sm-4" *ngFor="let question of quiz.questions">
-  <div class="{{ isAnswered(question) == 'Answered'? 'answered': 'not-answered' }}">
-    {{ isAnswered(question) }}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
+      <div [ngClass]="{'answered': isAnswered(question), 'not-answered': !isAnswered(question)}"
+           (click)="gotoQuestion(question.id)">
+        {{index + 1}}. {{ isAnswered(question) ? 'Answered' : 'Not Answered' }}
+      </div>
+    </div>
   </div>
 </div>

@@ -24,8 +24,9 @@
     <button class="btn btn-default" (click)="goTo(count - 1);">Last</button>
   </div>
   <div class="text-sm-center">
-    <button class="btn btn-success" (click)="goTo(0);" style="margin-top: 20px">Review and submit</button>
+    <button class="btn btn-success" (click)="mode = 'review'" style="margin-top: 20px">Review and submit</button>
   </div>
 </div>
 
-<app-quiz-review [quiz]="quiz" *ngIf="mode == 'review' && quiz"></app-quiz-review>
+<app-quiz-review [quiz]="quiz" (showQuestion)="showQuestion($event)"
+                 *ngIf="mode == 'review' && quiz"></app-quiz-review>

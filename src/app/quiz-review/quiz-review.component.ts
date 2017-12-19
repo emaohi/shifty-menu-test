@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from "../models/quiz";
 import {Question} from "../models/question";
 
@@ -10,14 +10,20 @@ import {Question} from "../models/question";
 export class QuizReviewComponent implements OnInit {
 
   @Input() quiz: Quiz;
+  @Output() showQuestion: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  isAnswered(question: Question) {
-    return question.answers.find(x => x.selected) ? 'Answered' : 'Not Answered';
+  isAnswered(question: Question) : boolean {
+    return !!question.answers.find(x => x.selected);
   };
+
+  gotoQuestion(questionId: number): void {
+    console.log(questionId);
+    this.showQuestion.emit(questionId);
+  }
 
 }
