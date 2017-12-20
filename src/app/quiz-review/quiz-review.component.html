@@ -3,7 +3,8 @@
     <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
       <div [ngClass]="{'answered': isAnswered(question), 'not-answered': !isAnswered(question)}"
            (click)="gotoQuestion(question.id)">
-        {{index + 1}}. {{ isAnswered(question) ? 'Answered' : 'Not Answered' }}
+        {{index + 1}}. <strong>{{ question.name }}</strong> <hr>
+        Your answer: <i>{{ selectedAnswer(question) }}</i>
       </div>
     </div>
   </div>

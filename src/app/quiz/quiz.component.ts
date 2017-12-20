@@ -39,6 +39,10 @@ export class QuizComponent implements OnInit {
     return this.quiz.questions[this.currIndex];
   }
 
+  onSelect() {
+      this.goTo(this.currIndex + 1);
+  }
+
   goTo(index: number) {
     if (index >= 0 && index < this.count) {
       this.currIndex = index;
