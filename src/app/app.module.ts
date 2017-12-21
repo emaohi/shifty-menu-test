@@ -24,9 +24,9 @@ import { QuizReviewComponent } from './quiz-review/quiz-review.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService
+    // )
   ],
   providers: [QuizService, InMemoryDataService],
   bootstrap: [AppComponent]

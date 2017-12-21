@@ -12,13 +12,16 @@ export class Quiz {
     if (data) {
       this.id = data.id;
       this.name = data.name;
-      this.description = data.description;
-      this.scoreToPass = data.scoreToPass;
-      this.time = data.time;
+      this.scoreToPass = data.score_to_pass;
+      this.time = data.time_to_pass;
       this.questions = [];
-      data.questions.forEach(q => {
-        this.questions.push(new Question(q));
-      });
+      if (data.questions) {
+        data.questions.forEach(q => {
+          this.questions.push(new Question(q));
+        });
+      } else {
+        this.questions = [];
+      }
     }
   }
 }

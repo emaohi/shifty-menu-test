@@ -1,6 +1,6 @@
 <div class="jumbotron" *ngIf="quiz">
   <h2>{{quiz.name}}</h2>
-  <p >You'll have {{quiz.time}} minutes to solve it, Good luck</p>
+  <p >You'll have {{quiz.time}} minutes to solve it, minimum score is {{quiz.scoreToPass}}, Good luck</p>
   <a href="/" class="btn btn-primary">Back to dashboard</a>
 </div>
 <div class="container" *ngIf="mode == 'quiz' && quiz">
@@ -10,7 +10,7 @@
     <div class="col-md-6" *ngFor="let answer of getCurrQuestion().answers">
       <div class="option">
         <label class="" [attr.for]="answer.id">
-          <input id="{{answer.id}}" type="checkbox" (change)="onSelect(currIndex +1)" [(ngModel)]="answer.selected"/>
+          <input id="{{answer.id}}" type="checkbox" [(ngModel)]="answer.selected"/>
           {{answer.name}}
         </label>
       </div>

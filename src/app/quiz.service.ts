@@ -16,7 +16,7 @@ export class QuizService {
 
   /** GET Quiz */
   getQuiz (): Observable<Quiz> {
-    return this.http.get<Quiz>(this.menuUrl + '/1');
+    return this.http.get<Quiz>(this.menuUrl + '/get_quiz');
   }
 
   /** GET Questions */

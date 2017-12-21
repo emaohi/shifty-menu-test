@@ -26,7 +26,9 @@ export class QuizComponent implements OnInit {
   loadQuiz() : void {
     this.quizService.getQuiz().subscribe(
       res => {
+        console.log(JSON.stringify(res));
         this.quiz = new Quiz(res);
+        console.log(JSON.stringify(this.quiz));
         this.count = this.quiz.questions.length;
     },
       err => {
@@ -37,10 +39,6 @@ export class QuizComponent implements OnInit {
 
   getCurrQuestion() : Question {
     return this.quiz.questions[this.currIndex];
-  }
-
-  onSelect() {
-      this.goTo(this.currIndex + 1);
   }
 
   goTo(index: number) {

@@ -8,8 +8,7 @@ export class InMemoryDataService implements InMemoryDbService{
 
   createDb() {
     const test = [
-      {id: 1, time: 15, name: 'Waiters test', questions: this.createQuestions(10)},
-      {id: 2, time: 13, questions: ['a', 'b', 'c']},
+      {id: 'get_quiz', time_to_pass: 15, score_to_pass: 60, name: 'Waiters test', questions: this.createQuestions(10)},
     ];
     return {test};
   }
@@ -27,7 +26,8 @@ export class InMemoryDataService implements InMemoryDbService{
   createAnswers(num: number) {
     let answers : Answer[] = [];
     for (let i = 0; i < 4; i++){
-      answers.push({id: 1, questionId: 1, isAnswer: i == 1, name: 'koko_' + num + '_' + i, selected: false})
+      answers.push({id: 1, questionId: 1, isAnswer: i == 1,
+        name: 'koko_' + (num+1) + '_' + (i+1), selected: false})
     }
     return answers;
   }

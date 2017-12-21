@@ -1,6 +1,6 @@
 .answered {
-  background-color:#039be5;
-  border:1px solid #039be5;
+  background-color:lightskyblue;
+  border:1px solid lightskyblue;
   margin:2px 0;
   padding:12px;
 }
@@ -10,4 +10,8 @@
   border:1px solid #eeaaaa;
   margin:2px 0;
   padding:12px;
+}
+
+.offset-sm-4 {
+  margin-bottom: 40px;
 }
