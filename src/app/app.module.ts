@@ -11,6 +11,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {FormsModule} from "@angular/forms";
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
+import {CookieService} from "ngx-cookie-service";
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { QuizReviewComponent } from './quiz-review/quiz-review.component';
     //   InMemoryDataService
     // )
   ],
-  providers: [QuizService, InMemoryDataService],
+  providers: [QuizService, InMemoryDataService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

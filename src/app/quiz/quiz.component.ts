@@ -14,6 +14,9 @@ export class QuizComponent implements OnInit {
   currIndex: number = 0;
   count: number;
 
+  roles = ['Waiter', 'Bartender', 'Cook'];
+  previewQuizRole: string;
+
   mode = 'quiz';
 
 

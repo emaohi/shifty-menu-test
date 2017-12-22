@@ -8,9 +8,9 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row submitRow">
     <div class="col-sm-4 offset-sm-4">
-      <button class="btn btn-lg btn-primary">Submit</button> <br>
+      <button class="btn btn-lg btn-primary" [disabled]="quiz.isPreview" (click)="submitQuiz()">Submit</button> <br>
         <small>Click on a question to view it</small>
     </div>
   </div>

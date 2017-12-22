@@ -1,5 +1,8 @@
 <div class="jumbotron" *ngIf="quiz">
-  <h2>{{quiz.name}}</h2>
+  <h2>
+    <small *ngIf="quiz.isPreview"><i>PREVIEW MODE OF:</i></small>
+    {{quiz.name}}
+  </h2>
   <p >You'll have {{quiz.time}} minutes to solve it, minimum score is {{quiz.scoreToPass}}, Good luck</p>
   <a href="/" class="btn btn-primary">Back to dashboard</a>
 </div>
