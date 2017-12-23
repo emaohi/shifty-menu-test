@@ -31,10 +31,8 @@ export class QuizService {
     return this.http.get<Question[]>(this.menuUrl + '/questions');
   }
 
-  submitQuiz (quiz: Quiz): Observable<string> {
-    // httpOptions['headers'].append("X-CSRFToken", this.getCookie('csrftoken'));
-    // httpOptions['headers'].append("blabla", 'blabla');
-    return this.http.post<string>(this.menuUrl + '/submit/', quiz, this.httpOptions);
+  submitQuiz (quiz: Quiz): Observable<any> {
+    return this.http.post<any>(this.menuUrl + '/submit/', quiz, this.httpOptions);
   }
 
   getCookie(key: string) : string {

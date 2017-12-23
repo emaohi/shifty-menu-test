@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!submitted">
   <div class="row">
     <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
       <div [ngClass]="{'answered': isAnswered(question), 'not-answered': !isAnswered(question)}"
@@ -15,3 +15,5 @@
     </div>
   </div>
 </div>
+
+<app-quiz-submit [quiz]="quiz" [result]="submitResult" *ngIf="submitted"></app-quiz-submit>

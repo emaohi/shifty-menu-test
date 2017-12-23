@@ -10,7 +10,7 @@ export class Answer {
     this.id = data.id;
     this.questionId = data.question;
     this.name = data.content;
-    this.isAnswer = data.is_correct;
+    this.selected = false;
   }
 }
 

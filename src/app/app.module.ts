@@ -12,13 +12,15 @@ import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {FormsModule} from "@angular/forms";
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
 import {CookieService} from "ngx-cookie-service";
+import { QuizSubmitComponent } from './quiz-submit/quiz-submit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
-    QuizReviewComponent
+    QuizReviewComponent,
+    QuizSubmitComponent
   ],
   imports: [
     BrowserModule,

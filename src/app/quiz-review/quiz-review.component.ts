@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from "../models/quiz";
 import {Question} from "../models/question";
+import {QuizResult} from "../models/quizResult"
 import {QuizService} from "../quiz.service";
 
 @Component({
@@ -12,6 +13,10 @@ export class QuizReviewComponent implements OnInit {
 
   @Input() quiz: Quiz;
   @Output() showQuestion: EventEmitter<any> = new EventEmitter();
+
+  submitted : boolean = false;
+
+  submitResult : any;
 
   constructor(private quizService: QuizService) { }
 
@@ -27,7 +32,6 @@ export class QuizReviewComponent implements OnInit {
   selectedAnswer(question: Question) : string{
     let name: string;
     question.answers.forEach(a => {
-      console.log('selected: ' + a.selected);
       if (a.selected) {
         name = a.name;
       }
@@ -43,7 +47,9 @@ export class QuizReviewComponent implements OnInit {
   submitQuiz() : void {
     this.quizService.submitQuiz(this.quiz).subscribe(
       res => {
+        this.submitted = true;
         console.log('ok, res is: ' + JSON.stringify(res));
+        this.submitResult = res;
       },
       err => {
         console.error("Error: " + err.message);

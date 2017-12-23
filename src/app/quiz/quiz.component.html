@@ -11,7 +11,7 @@
   <h2>{{currIndex + 1}}. <span [innerHTML]="getCurrQuestion().name"></span></h2>
   <div class="row">
     <div class="col-md-6" *ngFor="let answer of getCurrQuestion().answers">
-      <div class="option">
+      <div class="option"> 
         <label class="" [attr.for]="answer.id">
           <input id="{{answer.id}}" type="checkbox" [(ngModel)]="answer.selected"/>
           {{answer.name}}
