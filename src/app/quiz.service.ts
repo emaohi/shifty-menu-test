@@ -37,7 +37,7 @@ export class QuizService {
 
   getCookie(key: string) : string {
     let cookie : string = this.cookieService.get(key);
-    console.log('got ' + key + 'cookie: ' + cookie);
+    console.log('got ' + key + ' cookie: ' + cookie);
     return cookie;
   }
 

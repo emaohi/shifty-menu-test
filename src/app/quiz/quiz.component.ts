@@ -15,7 +15,8 @@ export class QuizComponent implements OnInit {
   count: number;
 
   roles = ['Waiter', 'Bartender', 'Cook'];
-  previewQuizRole: string;
+
+  errMsg: string;
 
   mode = 'quiz';
 
@@ -35,7 +36,8 @@ export class QuizComponent implements OnInit {
         this.count = this.quiz.questions.length;
     },
       err => {
-        console.error("Error: " + err.message);
+        console.error("Error: " + JSON.stringify(err));
+        this.errMsg = "Bad request: " + err.error;
       }
     );
   }

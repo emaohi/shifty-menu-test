@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-4" *ngFor="let question of quiz.questions; let index = index;">
       <div [ngClass]="{'correct': isCorrect(question), 'wrong': isCorrect(question) == false,
-       'notAnswered': isCorrect(question) == null}"
+       'not-answered': isCorrect(question) == null}"
            (click)="gotoQuestion(question.id)">
         {{index + 1}}. <strong>{{ question.name }}</strong> <hr>
         Your answer: <i>{{ selectedAnswer(question) }}</i> <hr>
