@@ -26,7 +26,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() : void {
     this.loadQuiz();
-    this.getRetryStatus();
+    // this.getRetryStatus();
   }
 
   loadQuiz() : void {
@@ -41,6 +41,7 @@ export class QuizComponent implements OnInit {
         console.error("Error: " + JSON.stringify(err));
         if (err['status'] == 400) {
           this.errMsg = "Bad request: " + err.error;
+          this.getRetryStatus();
         } else {
           this.errMsg = "Unexpected error: " + err.error;
         }

@@ -38,14 +38,14 @@
 
 <div class="container" *ngIf="errMsg">
   <h3>{{errMsg}}</h3>
-  <div [ngClass]="{'approved': retryStatus  == 'Approved', 'rejected': retryStatus  == 'Rejected'}">
+  <div *ngIf="retryStatus" [ngClass]="{'approved': retryStatus  == 'Approved', 'rejected': retryStatus  == 'Rejected'}">
     <p *ngIf="retryStatus == 'non-exist'">You can ask your manager to let you do this test again</p>
     <p *ngIf="retryStatus == 'Pending'">Your manager still has not responded to your request to retry</p>
     <p *ngIf="retryStatus == 'Rejected'">Unfortunately your manager rejected your request for retry :(</p>
     <p *ngIf="retryStatus == 'Approved'">Your manager approved your request to do this test again !</p>
+    <button class="btn btn-info" *ngIf="retryStatus == 'non-exist'" (click)="askRetry()">
+      Ask your manager for retry</button>
+    <button class="btn btn-primary" *ngIf="retryStatus == 'Approved'" (click)="retryQuiz()">
+      Retry quiz</button>
   </div>
-  <button class="btn btn-info" *ngIf="retryStatus == 'non-exist'" (click)="askRetry()">
-    Ask your manager for retry</button>
-  <button class="btn btn-primary" *ngIf="retryStatus == 'Approved'" (click)="retryQuiz()">
-    Retry quiz</button>
 </div>
