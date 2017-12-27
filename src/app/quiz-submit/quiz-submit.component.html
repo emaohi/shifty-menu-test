@@ -12,8 +12,8 @@
   </div>
   <div class="row">
     <div class="col-sm-4 offset-sm-4">
-      <h3 [ngStyle]="{'color':isPassed() ? 'green' : 'red'}"
-           > Passed : {{isPassed()}}
+      <h3 [ngStyle]="{'color':isPassed() ? 'green' : 'red'}">
+        {{isPassed() ? 'You passed the menu test ! ' : 'You failed:('}}
       </h3>
     </div>
   </div>

@@ -21,18 +21,28 @@ export class QuizService {
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
-  /** GET Quiz */
   getQuiz (): Observable<Quiz> {
     return this.http.get<Quiz>(this.menuUrl + '/get_quiz');
   }
 
-  /** GET Questions */
   getQuestions (): Observable<Question[]> {
     return this.http.get<Question[]>(this.menuUrl + '/questions');
   }
 
   submitQuiz (quiz: Quiz): Observable<any> {
     return this.http.post<any>(this.menuUrl + '/submit/', quiz, this.httpOptions);
+  }
+
+  getRetryStatus (): Observable<any> {
+    return this.http.get<any>(this.menuUrl + '/ask_retry_quiz')
+  }
+
+  askForRetry (): Observable<any> {
+    return this.http.post<any>(this.menuUrl + '/ask_retry_quiz/', {}, this.httpOptions);
+  }
+
+  doRetry (): Observable<any> {
+    return this.http.post<any>(this.menuUrl + '/retry_quiz/', {}, this.httpOptions);
   }
 
   getCookie(key: string) : string {

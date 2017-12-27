@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
   roles = ['Waiter', 'Bartender', 'Cook'];
 
   errMsg: string;
+  retryStatus: string;
 
   mode = 'quiz';
 
@@ -25,6 +26,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() : void {
     this.loadQuiz();
+    this.getRetryStatus();
   }
 
   loadQuiz() : void {
@@ -37,7 +39,11 @@ export class QuizComponent implements OnInit {
     },
       err => {
         console.error("Error: " + JSON.stringify(err));
-        this.errMsg = "Bad request: " + err.error;
+        if (err['status'] == 400) {
+          this.errMsg = "Bad request: " + err.error;
+        } else {
+          this.errMsg = "Unexpected error: " + err.error;
+        }
       }
     );
   }
@@ -57,4 +63,39 @@ export class QuizComponent implements OnInit {
     this.goTo(id);
   }
 
+  getRetryStatus() {
+    this.quizService.getRetryStatus().subscribe(
+      res => {
+        console.log('retry status is ' + JSON.stringify(res));
+        this.retryStatus = res.retry_status;
+      },
+      err => {
+        console.error('failed to get retry status: ' + JSON.stringify(err));
+      }
+    )
+  }
+
+  askRetry() {
+    this.quizService.askForRetry().subscribe(
+      res => {
+        console.log('retry ask response is: ' + res.created);
+        location.reload();
+      },
+      err => {
+        console.error('failed to ask for retry: ' + JSON.stringify(err));
+      }
+    )
+  }
+
+  retryQuiz () {
+    this.quizService.doRetry().subscribe(
+      res => {
+        console.log('do retry response is: ' + res.created);
+        location.reload();
+      },
+      err => {
+        console.error('failed to do retry: ' + JSON.stringify(err));
+      }
+    )
+  }
 }

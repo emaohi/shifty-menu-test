@@ -5,16 +5,13 @@
   padding:12px;
 }
 
-.wrong {
+.wrong, .not-answered {
   background-color:red;
   border:1px solid red;
   margin:2px 0;
   padding:12px;
 }
 
-.not-answered {
-  background-color:#ffcccc;
-  border:1px solid #eeaaaa;
-  margin:2px 0;
-  padding:12px;
+.row {
+  margin-bottom: 30px;
 }

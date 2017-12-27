@@ -6,8 +6,8 @@
 }
 
 .not-answered {
-  background-color:#ffcccc;
-  border:1px solid #eeaaaa;
+  background-color:yellow;
+  border:1px solid #eae5a6;
   margin:2px 0;
   padding:12px;
 }
