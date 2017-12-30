@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from "../models/quiz";
 import {Question} from "../models/question";
-import {QuizResult} from "../models/quizResult"
 import {QuizService} from "../quiz.service";
+import set = Reflect.set;
 
 @Component({
   selector: 'app-quiz-review',
@@ -50,6 +50,7 @@ export class QuizReviewComponent implements OnInit {
         this.submitted = true;
         console.log('ok, res is: ' + JSON.stringify(res));
         this.submitResult = res;
+        setTimeout(window.location.reload.bind(window.location), 3000);
       },
       err => {
         console.error("Error: " + err.message);

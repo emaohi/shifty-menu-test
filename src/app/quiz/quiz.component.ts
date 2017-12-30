@@ -33,14 +33,14 @@ export class QuizComponent implements OnInit {
     this.quizService.getQuiz().subscribe(
       res => {
         console.log(JSON.stringify(res));
-        this.quiz = new Quiz(res);
+        this.quiz = Quiz.createFrom(res);
         console.log(JSON.stringify(this.quiz));
         this.count = this.quiz.questions.length;
     },
       err => {
         console.error("Error: " + JSON.stringify(err));
         if (err['status'] == 400) {
-          this.errMsg = "Bad request: " + err.error;
+          this.errMsg = err.error;
           this.getRetryStatus();
         } else {
           this.errMsg = "Unexpected error: " + err.error;

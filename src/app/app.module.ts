@@ -13,6 +13,8 @@ import {FormsModule} from "@angular/forms";
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
 import {CookieService} from "ngx-cookie-service";
 import { QuizSubmitComponent } from './quiz-submit/quiz-submit.component';
+import { QuizCreatorComponent } from './quiz-creator/quiz-creator.component';
+// import { QuizDetailsComponent } from './quiz-details/quiz-details.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { QuizSubmitComponent } from './quiz-submit/quiz-submit.component';
     AppComponent,
     QuizComponent,
     QuizReviewComponent,
-    QuizSubmitComponent
+    QuizSubmitComponent,
+    QuizCreatorComponent,
+    // QuizDetailsComponent
   ],
   imports: [
     BrowserModule,

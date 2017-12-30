@@ -22,11 +22,11 @@ export class QuizService {
   }
 
   getQuiz (): Observable<Quiz> {
-    return this.http.get<Quiz>(this.menuUrl + '/get_quiz');
+    return this.http.get<Quiz>(this.menuUrl + '/get_quiz/');
   }
 
   getQuestions (): Observable<Question[]> {
-    return this.http.get<Question[]>(this.menuUrl + '/questions');
+    return this.http.get<Question[]>(this.menuUrl + '/questions/');
   }
 
   submitQuiz (quiz: Quiz): Observable<any> {
@@ -34,7 +34,7 @@ export class QuizService {
   }
 
   getRetryStatus (): Observable<any> {
-    return this.http.get<any>(this.menuUrl + '/ask_retry_quiz')
+    return this.http.get<any>(this.menuUrl + '/ask_retry_quiz/');
   }
 
   askForRetry (): Observable<any> {
@@ -51,4 +51,19 @@ export class QuizService {
     return cookie;
   }
 
+  getQuizzes() {
+    return this.http.get<any>(this.menuUrl + '/get_quizzes/')
+  }
+
+  create(quiz: Quiz) {
+
+  }
+
+  delete(id: number) {
+
+  }
+
+  update(id: number, quiz: Quiz) {
+
+  }
 }

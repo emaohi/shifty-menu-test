@@ -8,21 +8,23 @@ export class Quiz {
   scoreToPass: number;
   isPreview: boolean;
 
-  constructor(data: any) {
+  static createFrom(data: any) : Quiz{
+    let quiz : Quiz = new Quiz();
     if (data) {
-      this.id = data.id;
-      this.name = data.name;
-      this.scoreToPass = data.score_to_pass;
-      this.time = data.time_to_pass;
-      this.isPreview = data.is_preview;
-      this.questions = [];
+      quiz.id = data.id;
+      quiz.name = data.name;
+      quiz.scoreToPass = data.score_to_pass;
+      quiz.time = data.time_to_pass;
+      quiz.isPreview = data.is_preview;
+      quiz.questions = [];
       if (data.questions) {
         data.questions.forEach(q => {
-          this.questions.push(new Question(q));
+          quiz.questions.push(new Question(q));
         });
       } else {
-        this.questions = [];
+        quiz.questions = [];
       }
     }
+    return quiz;
   }
 }
