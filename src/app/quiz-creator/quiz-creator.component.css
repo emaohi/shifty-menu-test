@@ -1,0 +1,22 @@
+hr{
+  border-color: darkblue;
+  border-width: 20px;
+}
+#message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 50px;
+}
+.inner-message {
+  margin: 0 auto;
+  opacity: 0.7;
+}
+.existing {
+  background-color: antiquewhite !important;
+}
+
+h3 {
+  margin-bottom: 50px;
+}
