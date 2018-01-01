@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../models/quiz";
 import {QuizService} from "../quiz.service";
+import {Role} from "../models/role";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-quiz-creator',
@@ -9,41 +11,30 @@ import {QuizService} from "../quiz.service";
 })
 export class QuizCreatorComponent implements OnInit {
 
-  newQuiz: Quiz;
+  businessName: string = '';
+  roles: Role[];
 
-  existingQuizzes : Quiz[];
-
-  successMessage: string;
-  errorMessage: string;
-
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getEvents();
+    this.getQuizzes();
   }
 
-  private getEvents(): void {
+  private getQuizzes(): void {
     this.quizService.getQuizzes().subscribe(
       res => {
-
+        this.businessName = res['businessName'];
+        this.roles = res['roles']
       },
       err => {
-
+        console.error("Error: " + JSON.stringify(err));
       }
     )
   }
 
-  private getQuizCnt(): string {
-    return this.existingQuizzes.length.toString();
-  }
-
-  private setSuccessMessage(msg: string): void {
-    this.successMessage = msg;
-    setTimeout(() => this.successMessage = "", 3000);
-  }
-  private setErrorMessage(msg: string): void {
-    this.errorMessage = msg;
-    setTimeout(() => this.errorMessage = "", 3000);
+  private gotoQuiz(roleName){
+    console.log('gotoQuiz' + roleName);
+    this.router.navigate(['create', roleName]);
   }
 
 }

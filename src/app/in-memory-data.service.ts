@@ -9,8 +9,13 @@ export class InMemoryDataService implements InMemoryDbService{
   createDb() {
     const test = [
       {id: 'get_quiz', is_preview: true, time_to_pass: 15, score_to_pass: 60, name: 'Waiters test',
-        questions: this.createQuestions(10)}
+        questions: this.createQuestions(10)},
+      {id: 'get_quizzes', business_name: 'cool-business',
+        roles: [{'name': 'Waiter', 'imageUrl': 'https://png.icons8.com/metro/50/000000/waiter.png'},
+          {'name': 'Bartender', 'imageUrl': 'https://png.icons8.com/metro/50/000000/waiter.png'},
+          {'name': 'Cook', 'imageUrl': 'https://png.icons8.com/metro/50/000000/waiter.png'}]},
     ];
+
     return {test};
   }
 

@@ -14,7 +14,8 @@ import { QuizReviewComponent } from './quiz-review/quiz-review.component';
 import {CookieService} from "ngx-cookie-service";
 import { QuizSubmitComponent } from './quiz-submit/quiz-submit.component';
 import { QuizCreatorComponent } from './quiz-creator/quiz-creator.component';
-// import { QuizDetailsComponent } from './quiz-details/quiz-details.component';
+import { QuestionDetailsComponent } from './question-details/question-details.component';
+import { QuizRoleCreatorComponent } from './quiz-role-creator/quiz-role-creator.component';
 
 
 @NgModule({
@@ -24,16 +25,17 @@ import { QuizCreatorComponent } from './quiz-creator/quiz-creator.component';
     QuizReviewComponent,
     QuizSubmitComponent,
     QuizCreatorComponent,
-    // QuizDetailsComponent
+    QuestionDetailsComponent,
+    QuizRoleCreatorComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService
-    // )
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService
+    )
   ],
   providers: [QuizService, InMemoryDataService, CookieService],
   bootstrap: [AppComponent]
