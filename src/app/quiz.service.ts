@@ -26,7 +26,7 @@ export class QuizService {
   }
 
   getSpecificQuiz (role : string): Observable<Quiz> {
-    return this.http.get<Quiz>(this.menuUrl + '/get_quiz/' + role);
+    return this.http.get<Quiz>(this.menuUrl + '/get_specific_quiz/' + role + '/');
   }
 
   getQuestions (): Observable<Question[]> {

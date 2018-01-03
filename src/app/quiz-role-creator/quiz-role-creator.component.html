@@ -1,3 +1,22 @@
-<p>
-  quiz-role-creator works!
-</p>
+<div class="container">
+  <div class="page-header"><h1>Create {{role}} menu test</h1></div>
+  <div class="jumbotron">
+    <div class="row">
+      <h3>{{quiz.name}} - Basic settings</h3>
+    </div>
+    <form class="form-horizontal" *ngIf="quiz">
+      <div class="form-group">
+        <label for="quizName" class="col-sm-2 control-label">Name: </label>
+        <div class="col-sm-4">
+          <input type="text" id="quizName" [(ngModel)]="quiz.name" class="form-control" name="quizName"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="quizMinScore" class="col-sm-2 control-label">Minimum score: </label>
+        <div class="col-sm-4">
+          <input type="text" id="quizMinScore" [(ngModel)]="quiz.scoreToPass" class="form-control" name="quizMinScore"/>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
