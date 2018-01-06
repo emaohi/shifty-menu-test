@@ -5,12 +5,19 @@ export class Answer {
   isAnswer: boolean;
   selected: boolean;
 
-  constructor(data: any) {
-    data = data || {};
-    this.id = data.id;
-    this.questionId = data.question;
-    this.name = data.content;
+  constructor() {
     this.selected = false;
+  }
+
+  static createFrom(data: any) {
+    let answer: Answer = new Answer();
+    data = data || {};
+    answer.id = data.id;
+    answer.questionId = data.question;
+    answer.name = data.content;
+    answer.isAnswer = data.is_correct;
+    answer.selected = false;
+    return answer;
   }
 }
 

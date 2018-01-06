@@ -1,3 +1,16 @@
 .container {
   margin-top: 30px;
 }
+
+
+.col-md-6 {
+  margin-bottom: 20px;
+}
+
+.newQuestion {
+  margin-top: 20px;
+}
+
+#questionAddHeader {
+  text-align: center;
+}

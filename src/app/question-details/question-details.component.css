@@ -1,0 +1,34 @@
+.panel {
+  border: 1px solid rgb(96, 125, 139);
+  /*border-radius:0 !important;*/
+  transition: box-shadow 0.5s;
+}
+.panel:hover {
+  box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+.panel-footer .btn:hover {
+  border: 1px solid lightsteelblue;
+  background-color: #fff !important;
+  color: rgb(96, 125, 139);
+}
+.panel-heading {
+  color: #fff !important;
+  background-color: rgb(96, 125, 139) !important;
+  padding: 8px;
+  border-bottom: 1px solid transparent;
+}
+.panel-footer {
+  background-color: white !important;
+}
+.panel-footer h3 {
+  font-size: 32px;
+}
+.panel-footer h4 {
+  color: #aaa;
+  font-size: 14px;
+}
+.panel-footer .btn {
+  margin: 15px 0;
+  background-color: rgb(96, 125, 139);
+  color: #fff;
+}

@@ -1,22 +1,83 @@
-<div class="container">
+<div class="container" *ngIf="quiz">
   <div class="page-header"><h1>Create {{role}} menu test</h1></div>
   <div class="jumbotron">
     <div class="row">
-      <h3>{{quiz.name}} - Basic settings</h3>
+      <div class="col-sm-8">
+        <h3>{{quiz.name}} - Basic settings</h3>
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <label for="quizName" class="col-sm-4 col-form-label">Name: </label>
+            <div class="col-sm-6">
+              <input type="text" id="quizName" [(ngModel)]="quiz.name" class="form-control" name="quizName"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="quizMinTime" class="col-sm-4 col-form-label">Minimum score: </label>
+            <div class="col-sm-3">
+              <input type="text" id="quizMinTime" [(ngModel)]="quiz.scoreToPass" class="form-control"
+                     name="quizMinTime"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="quizMinScore" class="col-sm-4 col-form-label">Maximum time:</label>
+            <div class="col-sm-3">
+              <input type="text" id="quizMinScore" [(ngModel)]="quiz.time" class="form-control" name="quizMinScore"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-4 offset-sm-4">
+              <button class="btn btn-lg btn-primary">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <form class="form-horizontal" *ngIf="quiz">
-      <div class="form-group">
-        <label for="quizName" class="col-sm-2 control-label">Name: </label>
-        <div class="col-sm-4">
-          <input type="text" id="quizName" [(ngModel)]="quiz.name" class="form-control" name="quizName"/>
-        </div>
+
+    <div class="row newQuestion" *ngIf="newQuestion">
+      <div class="col-sm-10">
+        <h3 id="questionAddHeader">Add/Edit Question</h3>
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <label for="newQuestionName" class="col-sm-2 col-form-label">Question:</label>
+            <div class="col-sm-9">
+              <input id="newQuestionName" type="text" [(ngModel)]="newQuestion.name"
+                     class="form-control" name="newQuestion"/>
+            </div>
+            <div class="col-sm-1">
+              <strong>#{{newQuestion.id}}</strong>
+            </div>
+          </div>
+
+          <div class="form-group row" *ngFor="let a of this.newQuestion.answers; let i=index;">
+            <label for="newAnswer{{i}}" class="col-sm-2 col-form-label">Answer {{i+1}} (#{{a.id}}): </label>
+            <div class="col-sm-8">
+              <input type="text" id="newAnswer{{i}}" [(ngModel)]="a.name"
+                     class="form-control" name="newQuestionName{{i}}"/>
+            </div>
+            <label for="newAnswer{{i}}-correct" class="col-sm-1 col-form-label">correct:</label>
+            <div class="col-sm-1">
+              <input type="checkbox" id="newAnswer{{i}}-correct" [(ngModel)]="a.isAnswer"
+                     class="form-control" name="newQuestionIsCorrect-{{i}}"/>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-4 offset-sm-4">
+              <button class="btn btn-lg btn-primary">Save</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="quizMinScore" class="col-sm-2 control-label">Minimum score: </label>
-        <div class="col-sm-4">
-          <input type="text" id="quizMinScore" [(ngModel)]="quiz.scoreToPass" class="form-control" name="quizMinScore"/>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
+
+<div class="container" *ngIf="quiz">
+  <div class="row" style="margin-top: 20px">
+    <div class="col-md-6" *ngFor="let question of quiz.questions">
+      <app-question-details [question]="question" (click)="setNewQuestion(question)"></app-question-details>
+    </div>
+  </div>
+</div>
+
+<h2 *ngIf="errMsg">{{errMsg}}</h2>

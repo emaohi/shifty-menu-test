@@ -19,7 +19,7 @@ export class Quiz {
       quiz.questions = [];
       if (data.questions) {
         data.questions.forEach(q => {
-          quiz.questions.push(new Question(q));
+          quiz.questions.push(Question.createFrom(q));
         });
       } else {
         quiz.questions = [];

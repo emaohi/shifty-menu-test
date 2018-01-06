@@ -1,3 +1,17 @@
-<p>
-  question-details works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5 class="panel-title" style="display: inline">{{ question.name }}</h5>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let answer of question.answers">
+        <h5>
+          <span class="badge"
+                [ngClass]="{'badge-danger': !answer.isAnswer, 'badge-success': answer.isAnswer}">
+            {{answer.name}}
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>

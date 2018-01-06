@@ -10,6 +10,8 @@ export class InMemoryDataService implements InMemoryDbService{
     const test = [
       {id: 'get_quiz', is_preview: true, time_to_pass: 15, score_to_pass: 60, name: 'Waiters test',
         questions: this.createQuestions(10)},
+      {id: 'get_specific_quiz', is_preview: true, time_to_pass: 15, score_to_pass: 60, name: 'Waiters test',
+        questions: this.createQuestions(10)},
       {id: 'get_quizzes', business_name: 'cool-business',
         roles: [{'name': 'Waiter', 'imageUrl': 'https://png.icons8.com/metro/50/000000/waiter.png'},
           {'name': 'Bartender', 'imageUrl': 'https://png.icons8.com/metro/50/000000/waiter.png'},
@@ -32,7 +34,7 @@ export class InMemoryDataService implements InMemoryDbService{
   createAnswers(num: number) {
     let answers = [];
     for (let i = 0; i < 4; i++){
-      answers.push({id: 1, questionId: 1, is_correct: i == 1,
+      answers.push({id: i, questionId: 1, is_correct: i == 1,
         content: 'koko_' + (num + 1) + '_' + (i + 1), selected: false})
     }
     return answers;

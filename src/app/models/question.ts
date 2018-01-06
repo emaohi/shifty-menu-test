@@ -6,13 +6,23 @@ export class Question {
   answers: Answer[];
   answered: boolean;
 
-  constructor(data: any) {
+  constructor() {
+    this.answered = false;
+  }
+
+  static createFrom(data: any) {
+    let question = new Question();
     data = data || {};
-    this.id = data.id;
-    this.name = data.content;
-    this.answers = [];
-    data.answers.forEach(a => {
-      this.answers.push(new Answer(a));
-    });
+    question.answers = [];
+    question.id = data.id;
+    question.name = data.content;
+    if (data.answers) {
+      data.answers.forEach(a => {
+        question.answers.push(Answer.createFrom(a));
+      });
+    } else {
+      question.answers = [];
+    }
+    return question;
   }
 }
