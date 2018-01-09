@@ -33,9 +33,9 @@ import { QuizRoleCreatorComponent } from './quiz-role-creator/quiz-role-creator.
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService
-    // )
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService
+    )
   ],
   providers: [QuizService, InMemoryDataService, CookieService],
   bootstrap: [AppComponent]

@@ -17,6 +17,9 @@ export class QuizRoleCreatorComponent implements OnInit {
 
   newQuestion: Question;
 
+  successMessage: string;
+  errorMessage: string;
+
   errMsg: string;
 
   constructor(private route:ActivatedRoute, private quizService : QuizService){
@@ -56,7 +59,37 @@ export class QuizRoleCreatorComponent implements OnInit {
     this.newQuestion.answers = answers;
   }
 
-  private setNewQuestion(ques : Question) {
-    this.newQuestion = ques;
+  private setNewQuestion(quesId : number) {
+    this.quiz.questions.forEach(q => {
+      if (q.id == quesId){
+        this.newQuestion = q;
+      }
+    });
+  }
+
+  private updateBasicConfig() {
+    this.quizService.submitBasicConf(this.quiz.id, this.quiz.name, this.quiz.time, this.quiz.scoreToPass).subscribe(
+      res => {
+        this.setSuccessMessage("Quiz updated");
+      },
+      err => {
+        if (err['status'] == 400) {
+          console.error("Bad request Error: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        } else {
+          console.error("Unexpected Error: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        }
+      }
+    );
+  }
+
+  private setSuccessMessage(msg: string): void {
+    this.successMessage = msg;
+    setTimeout(() => this.successMessage = "", 3000);
+  }
+  private setErrorMessage(msg: string): void {
+    this.errorMessage = msg;
+    setTimeout(() => this.errorMessage = "", 3000);
   }
 }

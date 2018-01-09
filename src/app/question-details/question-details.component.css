@@ -1,6 +1,6 @@
 .panel {
   border: 1px solid rgb(96, 125, 139);
-  /*border-radius:0 !important;*/
+  /*border-radius: 15px !important;*/
   transition: box-shadow 0.5s;
 }
 .panel:hover {
@@ -31,4 +31,8 @@
   margin: 15px 0;
   background-color: rgb(96, 125, 139);
   color: #fff;
+}
+
+.btn-info {
+  float: right;
 }

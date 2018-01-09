@@ -59,6 +59,12 @@ export class QuizService {
     return this.http.get<any>(this.menuUrl + '/get_quizzes/')
   }
 
+  submitBasicConf(id: number, name: string, time: number, score: number) {
+    console.log("id " + id + "time " + time + "score " + score);
+    return this.http.post<any>(this.menuUrl + '/update_basic_conf/',
+      {id: id, name: name, time: time, score: score}, this.httpOptions);
+  }
+
   create(quiz: Quiz) {
 
   }
@@ -70,4 +76,5 @@ export class QuizService {
   update(id: number, quiz: Quiz) {
 
   }
+
 }

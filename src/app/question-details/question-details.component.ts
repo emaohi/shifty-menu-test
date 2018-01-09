@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from "../models/question";
 
 @Component({
@@ -10,9 +10,15 @@ export class QuestionDetailsComponent implements OnInit {
 
   @Input() question: Question;
 
+  @Output() emitQuestion: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showQuestion() {
+    this.emitQuestion.emit(this.question.id);
   }
 
 }
