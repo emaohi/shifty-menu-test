@@ -36,3 +36,7 @@
 .btn-info {
   float: right;
 }
+
+tr {
+  text-align: center;
+}

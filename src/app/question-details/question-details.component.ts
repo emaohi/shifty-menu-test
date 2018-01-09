@@ -12,13 +12,19 @@ export class QuestionDetailsComponent implements OnInit {
 
   @Output() emitQuestion: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  showAnswers: boolean;
+
+  constructor() {this.showAnswers = false;}
 
   ngOnInit() {
   }
 
   showQuestion() {
     this.emitQuestion.emit(this.question.id);
+  }
+
+  toggleAnswers() {
+    this.showAnswers = !this.showAnswers;
   }
 
 }

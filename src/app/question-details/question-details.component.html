@@ -1,18 +1,17 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h5 class="panel-title" style="display: inline">{{ question.name }}</h5>
-    <button class="btn-info" (click)="showQuestion()">Edit</button>
+    <button class="btn btn-info btn-sm" (click)="showQuestion()">Edit</button>
+    <button class="btn btn-default btn-sm" (click)="toggleAnswers()">Show answers</button>
   </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-3" *ngFor="let answer of question.answers">
-        <h5>
-          <span class="badge"
-                [ngClass]="{'badge-danger': !answer.isAnswer, 'badge-success': answer.isAnswer}">
-            {{answer.name}}
-          </span>
-        </h5>
-      </div>
-    </div>
+  <div class="panel-body" *ngIf="showAnswers">
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let answer of question.answers"
+            [ngClass]="{'table-success': answer.isAnswer, 'table-danger': !answer.isAnswer}">
+          <td>{{answer.name}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
