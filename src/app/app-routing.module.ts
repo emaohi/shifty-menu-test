@@ -7,8 +7,10 @@ import {QuizRoleCreatorComponent} from "./quiz-role-creator/quiz-role-creator.co
 
 const routes: Routes = [
   { path: '', component: QuizComponent},
-  { path: 'create', component: QuizCreatorComponent},
-  { path: 'create/:role', component: QuizRoleCreatorComponent},
+  { path: 'create', component: QuizCreatorComponent, children:[
+    {path: ':role', component: QuizRoleCreatorComponent}
+  ]},
+  // { path: 'create/:role', component: QuizRoleCreatorComponent},
 ];
 
 @NgModule({

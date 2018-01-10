@@ -32,9 +32,9 @@ export class QuizCreatorComponent implements OnInit {
     )
   }
 
-  private gotoQuiz(roleName){
-    console.log('gotoQuiz' + roleName);
-    this.router.navigate(['create', roleName]);
-  }
+  // private gotoQuiz(roleName){
+  //   console.log('gotoQuiz' + roleName);
+  //   this.router.navigate(['create', roleName]);
+  // }
 
 }

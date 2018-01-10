@@ -27,9 +27,11 @@ export class QuizRoleCreatorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.role = this.route.snapshot.paramMap.get('role');
-    this.get_specific_quiz(this.role);
-    this.set_answers_to_new_question();
+    this.route.params.subscribe(params => {
+      this.role = params['role'];
+      this.get_specific_quiz(this.role);
+      this.set_answers_to_new_question();
+    });
   }
 
   private get_specific_quiz(role) {

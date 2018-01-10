@@ -36,3 +36,14 @@
   background-color: rgb(96, 125, 139);
   color: #fff;
 }
+
+.sidenav {
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 180px;
+  left: 10px;
+  /*background: #eee;*/
+  overflow-x: hidden;
+  padding: 8px 0;
+}
