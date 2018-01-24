@@ -11,10 +11,11 @@ export class Quiz {
   static createFrom(data: any) : Quiz{
     let quiz : Quiz = new Quiz();
     if (data) {
-      quiz.id = data.id;
-      quiz.name = data.name;
-      quiz.scoreToPass = data.score_to_pass;
-      quiz.time = data.time_to_pass;
+      let dataFields = data.fields;
+      quiz.id = data.pk;
+      quiz.name = dataFields.name;
+      quiz.scoreToPass = dataFields.score_to_pass;
+      quiz.time = dataFields.time_to_pass;
       quiz.isPreview = data.is_preview;
       quiz.questions = [];
       if (data.questions) {

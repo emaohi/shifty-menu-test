@@ -65,6 +65,19 @@ export class QuizService {
       {id: id, name: name, time: time, score: score}, this.httpOptions);
   }
 
+  updateQuestion(question: Question, quizId: number): Observable<any> {
+    console.log("Going to update question: " + JSON.stringify(question));
+    let questionPostData = question.createPostData(quizId);
+    console.log("Going to send this post data: " + JSON.stringify(questionPostData));
+    return this.http.post<any>(this.menuUrl + '/update_question/', questionPostData, this.httpOptions);
+  }
+
+  createQuestion(question: Question, quizId: number): Observable<any> {
+    console.log("Going only to create question");
+    return this.http.post<any>(this.menuUrl + '/create_question/',
+      Object.assign(question, {'quiz': quizId}), this.httpOptions);
+  }
+
   create(quiz: Quiz) {
 
   }

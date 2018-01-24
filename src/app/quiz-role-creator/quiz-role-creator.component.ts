@@ -29,13 +29,13 @@ export class QuizRoleCreatorComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.role = params['role'];
-      this.get_specific_quiz(this.role);
+      this.get_specific_quiz();
       this.set_answers_to_new_question();
     });
   }
 
-  private get_specific_quiz(role) {
-    this.quizService.getSpecificQuiz(role).subscribe(
+  private get_specific_quiz() {
+    this.quizService.getSpecificQuiz(this.role).subscribe(
       res => {
         this.quiz = Quiz.createFrom(res);
       },
@@ -86,6 +86,51 @@ export class QuizRoleCreatorComponent implements OnInit {
     );
   }
 
+  private updateQuestion() {
+    if (this.newQuestion.id == null) {
+      this.createQuestion();
+    } else {
+      this.updateQuestionsWithAnswers();
+    }
+  }
+
+  private updateQuestionsWithAnswers() {
+    this.quizService.updateQuestion(this.newQuestion, this.quiz.id).subscribe(
+      res => {
+        this.setSuccessMessage("Quiz updated");
+        this.get_specific_quiz();
+      },
+      err => {
+        if (err['status'] == 400) {
+          console.error("Bad request Error: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        } else {
+          console.error("Unexpected Error: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        }
+      }
+    );
+  }
+
+  private createQuestion() {
+    this.quizService.createQuestion(this.newQuestion, this.quiz.id).subscribe(
+      res => {
+        this.newQuestion.id = res.question_id;
+        console.log('new question id is ' + res.question_id);
+        this.updateQuestionsWithAnswers();
+      },
+      err => {
+        if (err['status'] == 400) {
+          console.error("Bad request Error when creating question: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        } else {
+          console.error("Unexpected Error: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        }
+      }
+    );
+  }
+
   private setSuccessMessage(msg: string): void {
     this.successMessage = msg;
     setTimeout(() => this.successMessage = "", 3000);
@@ -94,4 +139,5 @@ export class QuizRoleCreatorComponent implements OnInit {
     this.errorMessage = msg;
     setTimeout(() => this.errorMessage = "", 3000);
   }
+
 }
