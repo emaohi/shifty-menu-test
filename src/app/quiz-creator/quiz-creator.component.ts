@@ -14,7 +14,7 @@ export class QuizCreatorComponent implements OnInit {
   businessName: string = '';
   roles: Role[];
 
-  constructor(private quizService: QuizService, private router: Router) { }
+  constructor(private quizService: QuizService) { }
 
   ngOnInit(): void {
     this.getQuizzes();
@@ -31,10 +31,5 @@ export class QuizCreatorComponent implements OnInit {
       }
     )
   }
-
-  // private gotoQuiz(roleName){
-  //   console.log('gotoQuiz' + roleName);
-  //   this.router.navigate(['create', roleName]);
-  // }
 
 }

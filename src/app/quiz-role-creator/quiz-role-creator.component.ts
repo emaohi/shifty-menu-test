@@ -23,14 +23,13 @@ export class QuizRoleCreatorComponent implements OnInit {
   errMsg: string;
 
   constructor(private route:ActivatedRoute, private quizService : QuizService){
-    this.newQuestion = new Question();
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      this.resetQuestion();
       this.role = params['role'];
       this.get_specific_quiz();
-      this.set_answers_to_new_question();
     });
   }
 
@@ -69,6 +68,24 @@ export class QuizRoleCreatorComponent implements OnInit {
     });
   }
 
+  private deleteQuestion(quesId : number) {
+    this.quizService.deleteQuestion(quesId).subscribe(
+      res => {
+        this.setSuccessMessage("Question " + quesId + " has been deleted");
+        this.resetPage();
+      },
+      err => {
+        if (err['status'] == 400) {
+          console.error("Bad request Error: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        } else {
+          console.error("Unexpected Error: " + JSON.stringify(err));
+          this.setErrorMessage(err.error);
+        }
+      }
+    );
+  }
+
   private updateBasicConfig() {
     this.quizService.submitBasicConf(this.quiz.id, this.quiz.name, this.quiz.time, this.quiz.scoreToPass).subscribe(
       res => {
@@ -98,7 +115,7 @@ export class QuizRoleCreatorComponent implements OnInit {
     this.quizService.updateQuestion(this.newQuestion, this.quiz.id).subscribe(
       res => {
         this.setSuccessMessage("Quiz updated");
-        this.get_specific_quiz();
+        this.resetPage();
       },
       err => {
         if (err['status'] == 400) {
@@ -129,6 +146,16 @@ export class QuizRoleCreatorComponent implements OnInit {
         }
       }
     );
+  }
+
+  private resetQuestion() {
+    this.newQuestion = new Question();
+    this.set_answers_to_new_question();
+  }
+
+  private resetPage() {
+    this.resetQuestion();
+    this.get_specific_quiz();
   }
 
   private setSuccessMessage(msg: string): void {

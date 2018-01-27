@@ -37,6 +37,10 @@
   float: right;
 }
 
+.table {
+  margin-bottom: 0px !important;
+}
+
 tr {
   text-align: center;
 }

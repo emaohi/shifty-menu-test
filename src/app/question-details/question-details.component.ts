@@ -11,6 +11,7 @@ export class QuestionDetailsComponent implements OnInit {
   @Input() question: Question;
 
   @Output() emitQuestion: EventEmitter<any> = new EventEmitter();
+  @Output() deleteQuestionEmitter: EventEmitter<any> = new EventEmitter();
 
   showAnswers: boolean;
 
@@ -25,6 +26,10 @@ export class QuestionDetailsComponent implements OnInit {
 
   toggleAnswers() {
     this.showAnswers = !this.showAnswers;
+  }
+
+  deleteQuestion() {
+    this.deleteQuestionEmitter.emit(this.question.id);
   }
 
 }

@@ -1,6 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h5 class="panel-title" style="display: inline">{{ question.name }}</h5>
+    <button class="btn btn-danger btn-sm" (click)="deleteQuestion()">
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </button>
     <button class="btn btn-info btn-sm" (click)="showQuestion()">
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </button>

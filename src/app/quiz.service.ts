@@ -78,16 +78,8 @@ export class QuizService {
       Object.assign(question, {'quiz': quizId}), this.httpOptions);
   }
 
-  create(quiz: Quiz) {
-
+  deleteQuestion(quesId: number): Observable<any> {
+    console.log("going to delete question id: " + quesId);
+    return this.http.delete<any>(this.menuUrl + '/delete_question/' + quesId + '/', this.httpOptions);
   }
-
-  delete(id: number) {
-
-  }
-
-  update(id: number, quiz: Quiz) {
-
-  }
-
 }

@@ -8,6 +8,7 @@ export class Question {
   backend_model: string;
 
   constructor() {
+    this.name = "new question";
     this.answered = false;
   }
 
