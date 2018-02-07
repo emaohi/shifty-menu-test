@@ -16,6 +16,7 @@ import { QuizSubmitComponent } from './quiz-submit/quiz-submit.component';
 import { QuizCreatorComponent } from './quiz-creator/quiz-creator.component';
 import { QuestionDetailsComponent } from './question-details/question-details.component';
 import { QuizRoleCreatorComponent } from './quiz-role-creator/quiz-role-creator.component';
+import {LoadingBarHttpClientModule} from "@ngx-loading-bar/http-client";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { QuizRoleCreatorComponent } from './quiz-role-creator/quiz-role-creator.
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    LoadingBarHttpClientModule
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService
     // )

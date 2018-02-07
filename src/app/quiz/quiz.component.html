@@ -7,6 +7,7 @@
     <p >You'll have {{quiz.time}} minutes to solve it, minimum score is {{quiz.scoreToPass}}, Good luck</p>
   </div>
   <a href="/" class="btn btn-primary">Back to dashboard</a>
+  <a href="/menu/test/create" class="btn btn-info" *ngIf="quiz && quiz.isPreview">Menu test creator</a>
 </div>
 <div class="container" *ngIf="mode == 'quiz' && quiz">
   <div class="badge badge-info">Question {{currIndex + 1}} of {{quiz.questions.length}}.</div>
