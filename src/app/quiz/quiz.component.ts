@@ -18,6 +18,7 @@ export class QuizComponent implements OnInit {
 
   errMsg: string;
   retryStatus: string;
+  isPreview: boolean;
 
   mode = 'quiz';
 
@@ -26,13 +27,13 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() : void {
     this.loadQuiz();
-    // this.getRetryStatus();
   }
 
   loadQuiz() : void {
     this.quizService.getQuiz().subscribe(
       res => {
         console.log(JSON.stringify(res));
+        this.isPreview = res['is_preview'];
         this.quiz = Quiz.createFrom(res);
         console.log(JSON.stringify(this.quiz));
         this.count = this.quiz.questions.length;
@@ -42,8 +43,11 @@ export class QuizComponent implements OnInit {
         if (err['status'] == 400) {
           this.errMsg = err.error;
           this.getRetryStatus();
+        } else if (err['status'] == 503) {
+          this.errMsg = "There is no quiz of this role yet.... but you can create one :)";
+          this.isPreview = true;
         } else {
-          this.errMsg = "Unexpected error: " + err.error;
+          this.errMsg = "Failed to load quiz: " + err.error;
         }
       }
     );
